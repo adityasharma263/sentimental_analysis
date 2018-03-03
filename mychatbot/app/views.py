@@ -17,11 +17,12 @@ def hello(request):
 @parser_classes((JSONParser,))
 def ask(request):
     testimonial = TextBlob(request.data['messageText'])
+    testimonial = testimonial.correct()
     no = testimonial.sentiment.polarity
     if no >= 0:
-        bot_response = "happy"
+        bot_response = "you are happy :)"
     elif no < 0:
-        bot_response = "sad"
+        bot_response = "you are sad :("
     return_obj = ReturnObj.ret(200)
     return_obj['content']['answer'] = bot_response
     return Response(data=return_obj['content'], status=return_obj['status'])

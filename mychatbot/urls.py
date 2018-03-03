@@ -8,7 +8,7 @@ from mychatbot.app.urls import urlpatterns as app_apis
 
 urlpatterns = [
 
-    url(r'^app/', include(app_apis)),
+    url(r'^', include(app_apis)),
     url(r'^admin/', admin.site.urls),
 
 ]
